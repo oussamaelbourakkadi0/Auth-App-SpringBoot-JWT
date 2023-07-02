@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "username": "oelbourakkadi",
+      "password": "idontknow",
+      "email": "oelbourakkadi@hps-worldwide.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "oussamaTest",
+      "password": "$2a$10$iC8ZB.DYRB6w5EqA.Ai9yOqYqqOvXXciVEo1c6.TPYcedofT4H29.",
+      "email": "testSd1s@gmail.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "oussamaTest2",
+      "password": "$2a$10$ac7Sn8qANF1Dm9CCgiJta.hQgG4dw/rqAtv0kCWWQr6hNGfZpDlLu",
+      "email": "testSd1ss@gmail.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "oussamaTest3",
+      "password": "$2a$10$sw4SpZ5ZyqCcaVI0VPXTSejhP1ehLOvl9cne2jRtngUzG9YMkhBcW",
+      "email": "te1stSd1ss@gmail.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "oussamaTest400",
+      "password": "$2a$10$2QqxbgCl8X5rWTQtPwIrfu0E.JuWSCPzy7nyfJ.pjSuCnv5khR1Pq",
+      "email": "te1stSd1ssS@gmail.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "oussamaTestC00",
+      "password": "$2a$10$DZieyFg7vJA86SAJCrhYIuwxOcbx01vGSNIQOPO/Q3oIWmsd3pH5O",
+      "email": "te1stSd1ssC@gmail.com",
+      "roleId": 1.0
+    },
+    {
+      "username": "OEBC00",
+      "password": "$2a$10$aRU76fqIB85svGQCASkTeemFUEybRnR7uBva7Mu80U0tBXA1AavCG",
+      "email": "te1stWd1ssC@gmail.com",
+      "roleId": 1.0
+    }
+  ]
+}

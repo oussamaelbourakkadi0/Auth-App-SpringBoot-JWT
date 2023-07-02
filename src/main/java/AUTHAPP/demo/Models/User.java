@@ -1,57 +1,25 @@
 package AUTHAPP.demo.Models;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.util.Set;
-import java.util.HashSet;
 
-@Entity
-@Table(
-        name = "users",
-        uniqueConstraints = {
-
-        }
-)
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @NotBlank
     private String username;
-
-    @NotBlank
-    private String email;
-
     @NotBlank
     private String password;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    @NotBlank
+    private String email;
+    private int roleId;
 
     public User() {
 
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, int roleId) {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        this.roleId = roleId;
     }
 
     public String getUsername() {
@@ -78,11 +46,16 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    @Override
+    public String toString() {
+        return "username: " + username + ", password: " + password + ", email: " + email + ", roleId: " + roleId;
     }
 }
