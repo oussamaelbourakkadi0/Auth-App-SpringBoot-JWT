@@ -1,6 +1,4 @@
 package AUTHAPP.demo.Security.JWT;
-
-import AUTHAPP.demo.Security.Services.UserDetailsImpl;
 import AUTHAPP.demo.Security.Services.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

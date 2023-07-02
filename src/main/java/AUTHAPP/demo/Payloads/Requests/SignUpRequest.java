@@ -9,13 +9,10 @@ public class SignUpRequest {
     @NotBlank
     @Size(min = 6, max = 50)
     private String username;
-
     @NotBlank
     @Size(max = 50)
     private String email;
-
-    private Set<String> roles;
-
+    private int roleId;
     @NotBlank
     @Size(min = 6)
     private String password;
@@ -36,19 +33,19 @@ public class SignUpRequest {
         this.email = email;
     }
 
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 }

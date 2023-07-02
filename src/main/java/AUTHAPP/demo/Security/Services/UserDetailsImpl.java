@@ -1,22 +1,19 @@
 package AUTHAPP.demo.Security.Services;
 
+import AUTHAPP.demo.Models.ERole;
 import AUTHAPP.demo.Models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
-
     private static final long serialVersionUID = 1L;
-
-    private Long id;
-
     private String username;
 
     private String email;
@@ -31,9 +28,8 @@ public class UserDetailsImpl implements UserDetails {
         return authorities;
     }
 
-    public UserDetailsImpl(Long id, String username, String email, String password,
+    public UserDetailsImpl(String username, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -41,21 +37,30 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public static UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
+        int roleId = user.getRoleId();
+        System.out.println("ROLE ID DURING THE BUILD: " + roleId);
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if (roleId == 1) {
+            System.out.println("PASSED HERE");
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(ERole.ROLE_ADMIN.name());
+            authorities.add(simpleGrantedAuthority);
+        }
+        else if (roleId == 2) {
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(ERole.ROLE_DIRECTOR.name());
+            authorities.add(simpleGrantedAuthority);
+        }
+        else {
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(ERole.ROLE_MEMBER.name());
+            authorities.add(simpleGrantedAuthority);
+        }
 
         return new UserDetailsImpl(
-                user.getId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities
         );
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getEmail() {
@@ -102,6 +107,6 @@ public class UserDetailsImpl implements UserDetails {
         }
 
         UserDetailsImpl user = (UserDetailsImpl) obj;
-        return Objects.equals(id, user.id);
+        return Objects.equals(username, user.username);
     }
 }
